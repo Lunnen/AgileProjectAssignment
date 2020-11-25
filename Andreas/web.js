@@ -18,6 +18,7 @@ galleryMain.className = "row";
 divMain.className = "main";
 filterBtnContainer.className = "myBtnContainer";
 
+// Image categories, must be typed the same in Picture array to work (this needs to be automatic)
 let filterChoice = ["all", "forest", "dark", "sunny"];
 
 for (let i = 0; i < filterChoice.length; i++) {
@@ -36,6 +37,7 @@ for (let i = 0; i < filterChoice.length; i++) {
   filterBtnContainer.appendChild(filterBtn);
 }
 
+// The object that creates a Card with text.
 function PictureContainer(enterClass, imgSrc, altName, title, text) {
   this.className = enterClass;
   this.imgSrc = imgSrc;
@@ -46,6 +48,7 @@ function PictureContainer(enterClass, imgSrc, altName, title, text) {
   this.createContainer = function () {};
   let galleryCol = document.createElement("div");
   let galleryContent = document.createElement("div");
+  galleryContent.className = "content";
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
@@ -66,7 +69,7 @@ function PictureContainer(enterClass, imgSrc, altName, title, text) {
   galleryContent.appendChild(galleryText);
 }
 
-let picContainers = [];
+let picContainers = []; // Array were IMG "cards" are stored.
 
 /* 
 This is where you push the pictures into the array (picContainers), 
@@ -81,7 +84,6 @@ picContainers.push(
     "this is a nice pic"
   )
 );
-
 picContainers.push(
   new PictureContainer(
     "forest",
@@ -91,7 +93,6 @@ picContainers.push(
     "another one"
   )
 );
-
 picContainers.push(
   new PictureContainer(
     "sunny",
@@ -101,3 +102,13 @@ picContainers.push(
     "Another one bites the dust..."
   )
 );
+picContainers.push(
+  new PictureContainer(
+    "dark",
+    "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+    "Inside",
+    "Inside",
+    "Calm inside view"
+  )
+);
+//funkar bra även att lägga till från webben direkt, vilket är bra att veta när vi ska ha riktiga upload-funktioner.
