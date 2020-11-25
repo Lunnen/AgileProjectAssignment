@@ -1,13 +1,78 @@
 <!DOCTYPE html>
-<head lang="en">
-    <script type="text/javascript" src="index.js"></script>
-</head>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="script.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<h1>My Heading</h1>
+<!-- MAIN (Center website) -->
+<div class="main">
 
-<p>My paragraph.</p>
+<h1>My Portfolio</h1>
+<hr>
 
+<h2>PORTFOLIO</h2>
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('nature')"> Nature</button>
+  <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+  <button class="btn" onclick="filterSelection('people')"> People</button>
+</div>
+<!--UPLOAD BUTTON-->
+<button class="btn upload" onclick=""> Upload</button>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column nature">
+    <div class="content">
+    <img src="images/1.jpg" alt="Lights" style="width:100%">
+      <h4>Orange sky</h4>
+      <p>Beautiful orange sky..</p>
+    </div>
+  </div>
+  <div class="column nature">
+    <div class="content">
+    <img src="images/2.jpg" alt="Nature" style="width:100%">
+      <h4>Green trail</h4>
+      <p>Green forest trail..</p>
+    </div>
+  </div>
+  
+  <div class="column cars">
+    <div class="content">
+      <img src="images/3.jpg" alt="Car" style="width:100%">
+      <h4>Stones in the night</h4>
+      <p>Beautiful stones by the sea in the night..</p>
+    </div>
+  </div>
+  <div class="column cars">
+    <div class="content">
+    <img src="images/4.jpg" alt="Car" style="width:100%">
+      <h4>Field</h4>
+      <p>Nice field with blue sky..</p>
+    </div>
+  </div>
+
+  <div class="column people">
+    <div class="content">
+      <img src="images/5.jpg" alt="Car" style="width:100%">
+      <h4>Yellow field</h4>
+      <p>Yellow field with a blue sky..</p>
+    </div>
+  </div>
+  <div class="column people">
+    <div class="content">
+    <img src="images/6.jpg" alt="Car" style="width:100%">
+      <h4>Sunset</h4>
+      <p>Open sunset scene..</p>
+    </div>
+  </div>
+<!-- END GRID -->
+</div>
+<!-- END MAIN -->
+</div>
 </body>
 </html>
