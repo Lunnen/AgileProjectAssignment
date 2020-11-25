@@ -1,0 +1,31 @@
+body {
+  background: white;
+}
+
+.fill {
+  
+  position: relative;
+  height: 150px;
+  width: 150px;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.hold {
+  border: solid 5px #ccc;
+}
+
+.empty {
+  display: inline-block;
+  height: 160px;
+  width: 160px;
+  margin: 2 px;
+  border: solid 2px black;
+  background: white;
+}
+
+.hovered {
+  background: #f4f4f4;
+  border-style: dashed;
+}
