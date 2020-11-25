@@ -59,10 +59,11 @@
     border: none;
     outline: none;
     padding: 12px 16px;
+    margin-top: 2px;
     background-color: white;
     cursor: pointer;
   }
-  
+
   .btn:hover {
     background-color: #ddd;
   }
