@@ -91,3 +91,13 @@ picContainers.push(
     "another one"
   )
 );
+
+picContainers.push(
+  new PictureContainer(
+    "sunny",
+    "./images/QGucjH.jpg",
+    "beautiful",
+    "New title",
+    "Another one bites the dust..."
+  )
+);
