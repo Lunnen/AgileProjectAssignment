@@ -35,7 +35,8 @@ uploadButton.textContent = "Upload an image";
 
 // The object that creates a Card with text.
 function ImgContainer(enterCategory, imgSrc, altName, title, text) {
-  if (enterCategory == "" || enterCategory == null) {
+  //checking if a string is blank, null or undefined
+  if (!enterCategory || /^\s*$/.test(enterCategory)) {
     this.className = "unfiltered";
   } else {
     this.className = enterCategory;
