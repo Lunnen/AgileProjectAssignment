@@ -2,44 +2,25 @@
 
 //Declare Elements
 let divMain = document.createElement("div");
-let h2 = document.createElement("h2");
+let pageTitle = document.createElement("h2");
 let filterBtnContainer = document.createElement("div");
 let galleryMain = document.createElement("div");
 
 //Put elements in these boxes on web-page
 document.body.appendChild(divMain);
-divMain.appendChild(h2);
+divMain.appendChild(pageTitle);
 divMain.appendChild(filterBtnContainer);
 divMain.appendChild(galleryMain);
 
 // Text contents
-h2.innerHTML = "Team 3 Gallery" + "<hr>";
+pageTitle.innerHTML = "Team 3 Gallery" + "<hr>";
 galleryMain.className = "row";
 divMain.className = "main";
 filterBtnContainer.className = "myBtnContainer";
 
-// Image categories, must be typed the same in Picture array to work (this needs to be automatic)
-let filterChoice = ["all", "forest", "dark", "sunny"];
-
-for (let i = 0; i < filterChoice.length; i++) {
-  let filterBtn = document.createElement("button");
-  filterBtn.className = "btn";
-
-  if (i == 0) {
-    filterBtn.className += " active";
-  }
-  filterBtn.setAttribute(
-    "onclick",
-    "filterSelection('" + filterChoice[i] + "')"
-  );
-  filterBtn.textContent = filterChoice[i];
-
-  filterBtnContainer.appendChild(filterBtn);
-}
-
 // The object that creates a Card with text.
-function ImgContainer(enterClass, imgSrc, altName, title, text) {
-  this.className = enterClass;
+function ImgContainer(enterCategory, imgSrc, altName, title, text) {
+  this.className = enterCategory;
   this.imgSrc = imgSrc;
   this.altName = altName;
   this.title = title;
@@ -52,7 +33,7 @@ function ImgContainer(enterClass, imgSrc, altName, title, text) {
   let galleryText = document.createElement("p");
 
   galleryContent.className = "content";
-  galleryCol.className = "column " + enterClass;
+  galleryCol.className = "column " + enterCategory;
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
@@ -64,6 +45,10 @@ function ImgContainer(enterClass, imgSrc, altName, title, text) {
   galleryContent.appendChild(galleryIMG);
   galleryContent.appendChild(galleryTitle);
   galleryContent.appendChild(galleryText);
+
+  this.getImgCategory = function () {
+    return this.className;
+  };
 }
 
 let imgContainers = []; // Array were IMG "cards" are stored.
@@ -92,15 +77,6 @@ imgContainers.push(
 );
 imgContainers.push(
   new ImgContainer(
-    "sunny",
-    "./images/QGucjH.jpg",
-    "beautiful",
-    "New title",
-    "Another one bites the dust..."
-  )
-);
-imgContainers.push(
-  new ImgContainer(
     "dark",
     "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     "Inside",
@@ -108,4 +84,42 @@ imgContainers.push(
     "Calm inside view"
   )
 );
-//funkar bra även att lägga till från webben direkt, vilket är bra att veta när vi ska ha riktiga upload-funktioner.
+imgContainers.push(
+  new ImgContainer(
+    "test",
+    "./images/QGucjH.jpg",
+    "beautiful",
+    "New title",
+    "Another one bites the dust..."
+  )
+);
+/*
+funkar bra även att lägga till från webben direkt, 
+vilket är bra att veta när vi ska ha riktiga upload-funktioner.
+*/
+
+/* Image categories/filters
+Auto creates another button if imgContainers contains a new category name,
+if not it's only an "all" button.
+*/
+let filterChoice = ["all"];
+
+imgContainers.forEach(function (el) {
+  filterChoice.push(el.getImgCategory());
+});
+
+for (let i = 0; i < filterChoice.length; i++) {
+  let filterBtn = document.createElement("button");
+  filterBtn.className = "btn";
+
+  if (i === 0) {
+    filterBtn.className += " active";
+  }
+  filterBtn.setAttribute(
+    "onclick",
+    "filterSelection('" + filterChoice[i] + "')"
+  );
+  filterBtn.textContent = filterChoice[i];
+
+  filterBtnContainer.appendChild(filterBtn);
+}
