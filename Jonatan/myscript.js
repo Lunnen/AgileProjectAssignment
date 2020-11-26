@@ -1,6 +1,4 @@
-
 const img = document.getElementById("myImg");
-console.log(img.files);
 
 //replace "input type=file" button with a custom button
 const inputButton = document.getElementById("inputFile");
@@ -17,15 +15,16 @@ inputButton.addEventListener("change", function() {
     }
 });
 
-
 window.addEventListener("load", function() {
     document.querySelector('input[type="file"]').addEventListener("change", function(){
         if(this.files && this.files[0]) {
-            UploadImage(URL.createObjectURL(this.files[0]));
+            img.src=URL.createObjectURL(this.files[0]);
+            //UploadImage(URL.createObjectURL(this.files[0]));           
         }
     });
 });
 
+/*
 function UploadImage(imgSource) {
     picContainers.push(
         new PictureContainer(
@@ -37,3 +36,4 @@ function UploadImage(imgSource) {
         )
       );
 }
+*/
