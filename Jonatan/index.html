@@ -21,20 +21,19 @@
 </div>
 
 <!--UPLOAD BUTTON-->
-<!-- action="upload.php" method="post" enctype="multipart/form-data"-->
+<!-- action="upload.php" method="POST" enctype="multipart/form-data" -->
 <!--från input name="myFile" -->
     
-<form class="form" id="myForm">
-    <input type="file" id="inputFile" hidden="hidden">
+<form class="form" id="myForm" >
+    <input type="file" name="file" id="inputFile" hidden="hidden">
     <button type="button" class="btn" id="custom-button">Upload an image</button>
-    <button type="submit">Uplod the selected file</button>
 </form>
 
 <!-- Portfolio Gallery Grid -->
 <div class="row">
   <div class="column nature">
     <div class="content">
-    <img src="images/1.jpg" alt="Lights" style="width:100%">
+    <img src="images/1.jpg" alt="Lights" style="width:100%" id="myImg">
       <h4>Orange sky</h4>
       <p>Beautiful orange sky..</p>
     </div>
