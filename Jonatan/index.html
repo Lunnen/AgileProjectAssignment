@@ -2,11 +2,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="script.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <!-- MAIN (Center website) -->
 <div class="main">
 
@@ -21,8 +19,16 @@
   <button class="btn" onclick="filterSelection('cars')"> Cars</button>
   <button class="btn" onclick="filterSelection('people')"> People</button>
 </div>
+
 <!--UPLOAD BUTTON-->
-<button class="btn upload" onclick=""> Upload</button>
+<!-- action="upload.php" method="post" enctype="multipart/form-data"-->
+<!--från input name="myFile" -->
+    
+<form class="form" id="myForm">
+    <input type="file" id="inputFile" hidden="hidden">
+    <button type="button" class="btn" id="custom-button">Upload an image</button>
+    <button type="submit">Uplod the selected file</button>
+</form>
 
 <!-- Portfolio Gallery Grid -->
 <div class="row">
@@ -74,5 +80,7 @@
 </div>
 <!-- END MAIN -->
 </div>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="myscript.js"></script>
 </body>
 </html>
