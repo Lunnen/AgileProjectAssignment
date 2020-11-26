@@ -38,28 +38,25 @@ for (let i = 0; i < filterChoice.length; i++) {
 }
 
 // The object that creates a Card with text.
-function PictureContainer(enterClass, imgSrc, altName, title, text) {
+function ImgContainer(enterClass, imgSrc, altName, title, text) {
   this.className = enterClass;
   this.imgSrc = imgSrc;
   this.altName = altName;
   this.title = title;
   this.text = text;
 
-  this.createContainer = function () {};
   let galleryCol = document.createElement("div");
   let galleryContent = document.createElement("div");
-  galleryContent.className = "content";
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
 
+  galleryContent.className = "content";
   galleryCol.className = "column " + enterClass;
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
-
   galleryTitle.textContent = title;
-
   galleryText.textContent = text;
 
   galleryMain.appendChild(galleryCol);
@@ -69,14 +66,14 @@ function PictureContainer(enterClass, imgSrc, altName, title, text) {
   galleryContent.appendChild(galleryText);
 }
 
-let picContainers = []; // Array were IMG "cards" are stored.
+let imgContainers = []; // Array were IMG "cards" are stored.
 
 /* 
-This is where you push the pictures into the array (picContainers), 
+This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
-picContainers.push(
-  new PictureContainer(
+imgContainers.push(
+  new ImgContainer(
     "dark",
     "./images/Ees96A.jpg",
     "nature pic",
@@ -84,8 +81,8 @@ picContainers.push(
     "this is a nice pic"
   )
 );
-picContainers.push(
-  new PictureContainer(
+imgContainers.push(
+  new ImgContainer(
     "forest",
     "./images/close-up-nature02.jpg",
     "pic 2",
@@ -93,8 +90,8 @@ picContainers.push(
     "another one"
   )
 );
-picContainers.push(
-  new PictureContainer(
+imgContainers.push(
+  new ImgContainer(
     "sunny",
     "./images/QGucjH.jpg",
     "beautiful",
@@ -102,8 +99,8 @@ picContainers.push(
     "Another one bites the dust..."
   )
 );
-picContainers.push(
-  new PictureContainer(
+imgContainers.push(
+  new ImgContainer(
     "dark",
     "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     "Inside",
