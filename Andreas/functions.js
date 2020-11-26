@@ -1,3 +1,6 @@
+/*-----------------------------------------------
+Filters which category to show. */
+
 filterSelection("all");
 function filterSelection(c) {
   var x, i;
@@ -32,7 +35,8 @@ function RemoveClass(element, name) {
   element.className = arr1.join(" ");
 }
 
-// Add active class to the current button (highlight it)
+/*-----------------------------------------------
+Add active class to the current button (highlight it) */
 var btns = filterBtnContainer.getElementsByClassName("btn");
 
 for (var i = 0; i < btns.length; i++) {
@@ -42,3 +46,4 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+//-----------------------------------------------
