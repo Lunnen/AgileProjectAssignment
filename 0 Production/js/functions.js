@@ -1,4 +1,34 @@
-/*-----------------------------------------------
+/*----------------------------------------------------------------
+Image categories/filters
+Auto creates another button if imgContainers-array contains a new category name,
+if not it's only an "all" button.
+*/
+let filterChoice = ["all"];
+
+imgContainers.forEach(function (el) {
+  if (filterChoice.indexOf(el.getImgCategory()) === -1) {
+    //if the category doesnt exist, then push to array (to avoid duplicate entries).
+    filterChoice.push(el.getImgCategory());
+  }
+});
+console.log(filterChoice);
+
+for (let i = 0; i < filterChoice.length; i++) {
+  let filterBtn = document.createElement("button");
+  filterBtn.className = "btn";
+
+  if (i === 0) {
+    filterBtn.className += " active";
+  }
+  filterBtn.setAttribute(
+    "onclick",
+    "filterSelection('" + filterChoice[i] + "')"
+  );
+  filterBtn.textContent = filterChoice[i];
+
+  filterBtnContainer.appendChild(filterBtn);
+}
+/*----------------------------------------------------------------
 Filters which category to show. */
 
 filterSelection("all");
