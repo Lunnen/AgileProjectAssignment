@@ -1,23 +1,18 @@
 
+const img = document.getElementById("myImg");
+console.log(img.files);
 
-//replace input button with a custom button
+//replace "input type=file" button with a custom button
 const inputButton = document.getElementById("inputFile");
 const customBtn = document.getElementById("custom-button");
 
+//virtually clicks the input button
 customBtn.addEventListener("click", function() {
     inputButton.click();
 });
 
 inputButton.addEventListener("change", function() {
-    if (inputButton.value) {
-        console.log("file chosen");
-        console.log(inputButton.value);
-        console.log(inputButton.files[0]);
-    }
-    else {
-        console.log("no file chosen");
-    }
-document.getElementById("inputFile").onchange = function() {
+    document.getElementById("inputFile").onchange = function() {
         document.getElementById("myForm").submit();
     }
 });
@@ -32,7 +27,6 @@ window.addEventListener("load", function() {
 });
 
 function UploadImage(imgSource) {
-
     picContainers.push(
         new PictureContainer(
           "FILTER",
