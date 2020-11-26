@@ -20,7 +20,11 @@ filterBtnContainer.className = "myBtnContainer";
 
 // The object that creates a Card with text.
 function ImgContainer(enterCategory, imgSrc, altName, title, text) {
-  this.className = enterCategory;
+  if (enterCategory == "" || enterCategory == null) {
+    this.className = "unfiltered";
+  } else {
+    this.className = enterCategory;
+  }
   this.imgSrc = imgSrc;
   this.altName = altName;
   this.title = title;
@@ -33,7 +37,7 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   let galleryText = document.createElement("p");
 
   galleryContent.className = "content";
-  galleryCol.className = "column " + enterCategory;
+  galleryCol.className = "column " + this.className;
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
@@ -59,7 +63,7 @@ which then renders them on page
 */
 imgContainers.push(
   new ImgContainer(
-    "dark",
+    "dark sky",
     "./images/Ees96A.jpg",
     "nature pic",
     "Forest",
@@ -68,7 +72,7 @@ imgContainers.push(
 );
 imgContainers.push(
   new ImgContainer(
-    "forest",
+    "forest view",
     "./images/close-up-nature02.jpg",
     "pic 2",
     "who cares",
@@ -77,7 +81,16 @@ imgContainers.push(
 );
 imgContainers.push(
   new ImgContainer(
-    "dark",
+    "Sunny view",
+    "./images/QGucjH.jpg",
+    "beautiful",
+    "New title",
+    "Another one bites the dust..."
+  )
+);
+imgContainers.push(
+  new ImgContainer(
+    "Computer on desk",
     "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     "Inside",
     "Inside",
@@ -86,27 +99,51 @@ imgContainers.push(
 );
 imgContainers.push(
   new ImgContainer(
-    "test",
-    "./images/QGucjH.jpg",
-    "beautiful",
-    "New title",
-    "Another one bites the dust..."
+    "",
+    "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+    "View of Petra the old city",
+    "Petra (Al-Batra)",
+    "Epic view of Petra in the dark."
   )
 );
+imgContainers.push(
+  new ImgContainer(
+    "",
+    "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+    "",
+    "",
+    ""
+  )
+);
+imgContainers.push(
+  new ImgContainer(
+    "Computer on desk",
+    "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+    "Inside",
+    "Inside",
+    "Calm inside view"
+  )
+);
+
 /*
+OVANSTÅENDE
 funkar bra även att lägga till från webben direkt, 
 vilket är bra att veta när vi ska ha riktiga upload-funktioner.
 */
 
-/* Image categories/filters
-Auto creates another button if imgContainers contains a new category name,
+/*----------------------------------------------------------------
+Image categories/filters
+Auto creates another button if imgContainers-array contains a new category name,
 if not it's only an "all" button.
 */
 let filterChoice = ["all"];
 
 imgContainers.forEach(function (el) {
-  filterChoice.push(el.getImgCategory());
+  if (filterChoice.indexOf(el.getImgCategory()) === -1) {
+    filterChoice.push(el.getImgCategory());
+  }
 });
+console.log(filterChoice);
 
 for (let i = 0; i < filterChoice.length; i++) {
   let filterBtn = document.createElement("button");
@@ -123,3 +160,4 @@ for (let i = 0; i < filterChoice.length; i++) {
 
   filterBtnContainer.appendChild(filterBtn);
 }
+//----------------------------------------------------------------
