@@ -11,7 +11,7 @@ imgContainers.forEach(function (el) {
     filterChoice.push(el.getImgCategory());
   }
 });
-console.log(filterChoice);
+//console.log(filterChoice);
 
 for (let i = 0; i < filterChoice.length; i++) {
   let filterBtn = document.createElement("button");

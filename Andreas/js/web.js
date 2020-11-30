@@ -23,8 +23,6 @@ pageTitle.innerHTML = "Team 3 Gallery" + "<hr>";
 galleryMain.className = "row";
 divMain.className = "main";
 filterBtnContainer.className = "myBtnContainer";
-
-// Kolla om nedanstående kan göras kortare <--------------------
 uploadForm.id = "myForm";
 uploadInput.type = "file";
 uploadInput.id = "inputFile";
@@ -71,12 +69,18 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   };
 }
 
-let imgContainers = []; // Array were IMG "cards" are stored.
+var imgContainers = []; // Array were IMG "cards" are stored.
 
+//Load previously stored in LocalStorage.
+/*
+var retrievedData = JSON.parse(localStorage.getItem("ImgArrayContainer"));
+console.log(retrievedData);
+*/
 /* 
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
+
 imgContainers.push(
   new ImgContainer(
     "dark sky",
@@ -122,3 +126,4 @@ imgContainers.push(
     ""
   )
 );
+console.log(imgContainers);

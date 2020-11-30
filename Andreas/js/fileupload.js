@@ -1,12 +1,12 @@
 //replace "input type=file" button with a custom button
-const inputButton = document.getElementById("inputFile");
+//const inputButton = document.getElementById("inputFile");
 const customBtn = document.getElementById("custom-button");
 
 //virtually clicks the input button
 customBtn.addEventListener("click", function () {
-  inputButton.click();
+  input.click();
 });
-
+/*
 inputButton.addEventListener("change", function () {
   document.getElementById("inputFile").onchange = function () {
     document.getElementById("myForm").submit();
@@ -28,4 +28,27 @@ function UploadImage(imgSource) {
   console.log(imgSource);
   console.log(imgContainers);
   filterSelection("all"); //updates rendering of images
+} */
+// localStorage.setItem("ImgArrayContainer", JSON.stringify(imgContainers));
+
+var input = document.getElementById("inputFile");
+input.addEventListener("change", showDataURI);
+
+function showDataURI() {
+  var output = document.getElementById("output");
+  var file = input.files[0];
+
+  var reader = new FileReader();
+  reader.onload = (e) => {
+    // set onload *before* calling readAsDataURL()
+    //
+
+    console.log(e.target.result);
+
+    imgContainers.push(new ImgContainer("", e.target.result, "", "", ""));
+    filterSelection("all"); //updates rendering of images
+    console.log("before change: ", imgContainers);
+    //localStorage.setItem("ImgArrayContainer", JSON.stringify(imgContainers));
+  };
+  reader.readAsDataURL(file);
 }
