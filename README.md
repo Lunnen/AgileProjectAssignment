@@ -1,2 +1,2 @@
 # AgileProjectAssignment
-JS Basics &amp; Agile Project Assignment @ EC 2020
+JS Basics & Agile Project Assignment @ EC Växjö 2020
