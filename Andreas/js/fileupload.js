@@ -45,8 +45,18 @@ function showDataURI() {
 
     console.log(e.target.result);
 
-    imgContainers.push(new ImgContainer("", e.target.result, "", "", ""));
+    imgContainers.push(
+      new ImgContainer(
+        prompt("Enter Category", ""),
+        e.target.result,
+        "",
+        "",
+        ""
+      )
+    );
+    //filterChoice.push(el.getImgCategory());
     filterSelection("all"); //updates rendering of images
+
     console.log("before change: ", imgContainers);
     //localStorage.setItem("ImgArrayContainer", JSON.stringify(imgContainers));
   };
