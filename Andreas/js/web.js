@@ -71,19 +71,13 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
 
 var imgContainers = []; // Array were IMG "cards" are stored.
 
-//Load previously stored in LocalStorage.
-/*
-var retrievedData = JSON.parse(localStorage.getItem("ImgArrayContainer"));
-console.log(retrievedData);
-*/
-
 /* 
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
 imgContainers.push(
   new ImgContainer(
-    "dark sky",
+    "Landscape",
     "./images/Ees96A.jpg",
     "nature pic",
     "Forest",
@@ -92,25 +86,25 @@ imgContainers.push(
 );
 imgContainers.push(
   new ImgContainer(
-    "forest view",
+    "Landscape",
     "./images/close-up-nature02.jpg",
-    "pic 2",
-    "who cares",
+    "forestal view",
+    "Forestal view",
     "another one"
   )
 );
 imgContainers.push(
   new ImgContainer(
-    "Sunny view",
+    "Landscape",
     "./images/QGucjH.jpg",
     "beautiful",
-    "New title",
+    "A field and clouds",
     "Another one bites the dust..."
   )
 );
 imgContainers.push(
   new ImgContainer(
-    "Computer on desk",
+    "Computer",
     "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     "Inside",
     "Inside",
@@ -119,11 +113,10 @@ imgContainers.push(
 );
 imgContainers.push(
   new ImgContainer(
-    "dark sky",
+    "Monument",
     "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
     "Petra city in the dark",
     "Petra",
     "URL FROM NET"
   )
 );
-//console.log(imgContainers);

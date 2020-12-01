@@ -28,10 +28,6 @@ function showDataURI() {
     );
     createFilterButtons(); //Create a new filter button, if needed
     filterSelection("all"); //updates rendering of images
-
-    //console.log("before change: ", imgContainers);
-    //localStorage.setItem("ImgArrayContainer", JSON.stringify(imgContainers));
   };
   reader.readAsDataURL(file);
-  console.log(filterChoice);
 }

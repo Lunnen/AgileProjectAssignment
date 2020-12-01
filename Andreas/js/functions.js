@@ -5,7 +5,7 @@ if not it's only an "all" button.
 */
 let filterChoice = ["all"];
 
-createFilterButtons();
+createFilterButtons(); //Create the filter buttons
 
 function createFilterButtons() {
   while (filterBtnContainer.firstChild) {
@@ -29,7 +29,7 @@ function createFilterButtons() {
     filterBtn.className = "btn";
 
     if (i === 0) {
-      filterBtn.className += " active";
+      filterBtn.className += " active"; //defaults to "all" pictures button
     }
 
     filterBtn.addEventListener("click", function () {
