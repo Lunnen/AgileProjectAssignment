@@ -1,9 +1,6 @@
 :root {
   --bg-color-body: #e4edf2;
-
-  --bg-color-dark: rgba(60, 153, 220, 0.7);
-
-  --bg-color-button-inactive: rgba(187, 220, 240, 0.7);
+  --bg-color-button-and-content-inactive: rgba(187, 220, 240, 0.7);
   --bg-color-button-hover: rgb(146, 210, 249);
   --bg-color-button-active: rgb(37, 101, 174);
 }
@@ -54,7 +51,7 @@ h1 {
 
 /* Content */
 .content {
-  background-color: var(--bg-color-button-inactive);
+  background-color: var(--bg-color-button-and-content-inactive);
   border-radius: 10px;
   padding: 1rem;
 }
@@ -72,10 +69,10 @@ h1 {
 /* Style the buttons */
 .btn,
 #custom-button {
-  border: outset 1px solid white;
+  border: 0.05em outset white;
   outline: none;
   padding: 12px 16px;
-  background-color: var(--bg-color-button-inactive);
+  background-color: var(--bg-color-button-and-content-inactive);
   cursor: pointer;
   text-transform: UPPERCASE;
   margin: 0.05rem;

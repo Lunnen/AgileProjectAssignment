@@ -1,6 +1,6 @@
 "use strict";
 
-//Declare Elements
+// Declare Elements
 let divMain = document.createElement("div");
 let pageTitle = document.createElement("h2");
 let filterBtnContainer = document.createElement("div");
@@ -9,7 +9,7 @@ let uploadForm = document.createElement("form");
 let uploadInput = document.createElement("input");
 let uploadButton = document.createElement("button");
 
-//Put elements in these boxes on web-page
+// Put elements in these boxes on web-page
 document.body.appendChild(divMain);
 divMain.appendChild(pageTitle);
 divMain.appendChild(filterBtnContainer);
@@ -76,11 +76,11 @@ var imgContainers = []; // Array were IMG "cards" are stored.
 var retrievedData = JSON.parse(localStorage.getItem("ImgArrayContainer"));
 console.log(retrievedData);
 */
+
 /* 
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
-
 imgContainers.push(
   new ImgContainer(
     "dark sky",
@@ -114,16 +114,16 @@ imgContainers.push(
     "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
     "Inside",
     "Inside",
-    "Calm inside view"
+    "Calm inside view URL FROM NET"
   )
 );
 imgContainers.push(
   new ImgContainer(
-    "",
+    "dark sky",
     "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-    "",
-    "",
-    ""
+    "Petra city in the dark",
+    "Petra",
+    "URL FROM NET"
   )
 );
-console.log(imgContainers);
+//console.log(imgContainers);
