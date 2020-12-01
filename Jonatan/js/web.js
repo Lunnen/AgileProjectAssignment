@@ -27,7 +27,7 @@ filterBtnContainer.className = "myBtnContainer";
 // Kolla om nedanstående kan göras kortare <--------------------
 uploadForm.id = "myForm";
 uploadInput.type = "file";
-uploadInput.id = "inputFile";
+uploadInput.id = "uploadFile";
 uploadInput.hidden = "hidden";
 uploadButton.type = "button";
 uploadButton.id = "custom-button";
@@ -71,6 +71,39 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
 }
 
 let imgContainers = []; // Array were IMG "cards" are stored.
+
+const fileInputRead = document.getElementById("fileinput");
+fileInputRead.click();
+
+function readMultipleFiles(evt) {
+  //Retrieve all the files from the FileList object
+  let files = evt.target.files;
+
+  if (files) {
+      for (let i=0, file; file=files[i]; i++) {
+            let reader = new FileReader();
+          reader.onload = (function(file) {
+            alert( "Got the file:" 
+                        +" name: " + file.name + "");
+                        imgContainers.push(
+                          new ImgContainer(
+                            "dark sky",
+                            "./images/" + file.name,
+                            "nature pic",
+                            "Forest",
+                            "this is a nice pic"
+                          )
+                        );
+          })(file);
+          filterSelection("all");
+          reader.readAsText(file);
+      }   
+  } else {
+        alert("Failed to load files"); 
+  }
+}
+
+document.getElementById('fileinput').addEventListener('change', readMultipleFiles, false);
 
 /* 
 This is where you push the pictures into the array (imgContainers), 
