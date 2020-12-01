@@ -5,28 +5,41 @@ if not it's only an "all" button.
 */
 let filterChoice = ["all"];
 
-imgContainers.forEach(function (el) {
-  if (filterChoice.indexOf(el.getImgCategory()) === -1) {
-    //if the category doesnt exist, then push to array (to avoid duplicate entries).
-    filterChoice.push(el.getImgCategory());
+createFilterButtons(); //Create the filter buttons
+
+function createFilterButtons() {
+  while (filterBtnContainer.firstChild) {
+    //start on a clean slate (no buttons)
+    filterBtnContainer.firstChild.remove();
   }
-});
-//console.log(filterChoice);
 
-for (let i = 0; i < filterChoice.length; i++) {
-  let filterBtn = document.createElement("button");
-  filterBtn.className = "btn";
+  imgContainers.forEach(function (el) {
+    if (filterChoice.indexOf(el.getImgCategory()) === -1) {
+      //if the category doesnt exist, then push to array (to avoid duplicate entries).
+      filterChoice.push(el.getImgCategory());
+    }
+  });
 
-  if (i === 0) {
-    filterBtn.className += " active";
+  /*
+  Creates all the buttons needed, based on the array filterChoice,
+   which gets its values from the main image array - imgContainers.
+   */
+  for (let i = 0; i < filterChoice.length; i++) {
+    let filterBtn = document.createElement("button");
+    filterBtn.className = "btn";
+
+    if (i === 0) {
+      filterBtn.className += " active"; //defaults to "all" pictures button
+    }
+
+    filterBtn.addEventListener("click", function () {
+      filterSelection(filterChoice[i]);
+    });
+
+    filterBtn.textContent = filterChoice[i];
+
+    filterBtnContainer.appendChild(filterBtn);
   }
-  filterBtn.setAttribute(
-    "onclick",
-    "filterSelection('" + filterChoice[i] + "')"
-  );
-  filterBtn.textContent = filterChoice[i];
-
-  filterBtnContainer.appendChild(filterBtn);
 }
 /*----------------------------------------------------------------
 Filters which category to show. */
