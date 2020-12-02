@@ -1,9 +1,15 @@
+:root {
+  --bg-color-body: #b1ddf5;
+  --bg-color-button-and-content-inactive:  rgb(255, 255, 255);
+  --bg-color-button-hover: rgb(146, 210, 249);
+  --bg-color-button-active: rgb(37, 101, 174);
+}
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #f1f1f1;
+  background-color: var(--bg-color-body);
   padding: 0.5rem;
   font-family: Arial;
 }
@@ -11,6 +17,7 @@ body {
 .main {
   max-width: 1000px;
   margin: auto;
+ 
 }
 
 h1 {
@@ -20,18 +27,24 @@ h1 {
 
 .row {
   margin: 10px -16px;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+
 
 /* Add padding BETWEEN each column */
 .row,
 .row > .column {
-  padding: 0.4rem;
+  padding: 0.3rem;
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;
-  width: 33.33%;
+  width: 32%;
 
   display: none; /* Hide all elements by default */
 }
@@ -45,7 +58,7 @@ h1 {
 
 /* Content */
 .content {
-  background-color: rgba(204, 204, 204, 0.5);
+  background-color: var(--bg-color-button-and-content-inactive);
   border-radius: 10px;
   padding: 1rem;
 }
@@ -57,32 +70,42 @@ h1 {
 
 .myBtnContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 /* Style the buttons */
 .btn,
 #custom-button {
-  border: none;
-  outline: none;
+  border:2px outset #242f95;
+  outline:none;
   padding: 12px 16px;
-  background-color: white;
+  background-color: var(--bg-color-button-and-content-inactive);
   cursor: pointer;
   text-transform: UPPERCASE;
+  color: #f7b200;
+  font-weight: bold;
+  margin: 0.05rem;
 }
 
 .btn:hover {
-  background-color: #ddd;
+  background-color: var(--bg-color-button-hover);
 }
 
 .btn.active {
-  background-color: #666;
+  background-color: var(--bg-color-button-active);
   color: white;
 }
 #custom-button {
-  background: limegreen;
+  background: var(--bg-color-button-active);
+  color: white;
 }
 #myForm {
   display: flex;
   justify-content: center;
+}
+.pageLogo {
+display: block;
+margin-left: auto;
+margin-right: auto;
 }

@@ -1,31 +1,33 @@
-//replace "input type=file" button with a custom button
-const inputButton = document.getElementById("inputFile");
+/*-----------------------------------------------------
+Replace "input type=file" button with a custom button
+*/
 const customBtn = document.getElementById("custom-button");
 
 //virtually clicks the input button
 customBtn.addEventListener("click", function () {
-  inputButton.click();
+  input.click();
 });
 
-inputButton.addEventListener("change", function () {
-  document.getElementById("inputFile").onchange = function () {
-    document.getElementById("myForm").submit();
+var input = document.getElementById("inputFile");
+input.addEventListener("change", showDataURI);
+
+function showDataURI() {
+  var output = document.getElementById("output");
+  var file = input.files[0];
+
+  var reader = new FileReader();
+  reader.onload = (e) => {
+    imgContainers.push(
+      new ImgContainer(
+        prompt("Enter Category", ""),
+        e.target.result, //sets value of raw-data-input in src.
+        "",
+        "",
+        ""
+      )
+    );
+    createFilterButtons(); //Create a new filter button, if needed
+    filterSelection("all"); //updates rendering of images
   };
-});
-
-window.addEventListener("load", function () {
-  document
-    .querySelector('input[type="file"]')
-    .addEventListener("change", function () {
-      if (this.files && this.files[0]) {
-        UploadImage(URL.createObjectURL(this.files[0]));
-      }
-    });
-});
-
-function UploadImage(imgSource) {
-  imgContainers.push(new ImgContainer("", imgSource, "", "", ""));
-  console.log(imgSource);
-  console.log(imgContainers);
-  filterSelection("all"); //updates rendering of images
+  reader.readAsDataURL(file);
 }
