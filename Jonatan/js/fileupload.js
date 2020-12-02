@@ -7,21 +7,46 @@ customBtn.addEventListener("click", function () {
   inputButton.click();
 });
 
+/*
 inputButton.addEventListener("change", function () {
   document.getElementById("uploadFile").onchange = function () {
     document.getElementById("myForm").submit();
   };
 });
+*/
+// File upload using fetch -------------------------------------------------------
+// select file input
+const input = document.getElementById('uploadFile');
 
-window.addEventListener("load", function () {
-  document
-    .querySelector('input[id="uploadFile"]')
-    .addEventListener("change", function () {
-      if (this.files && this.files[0]) {
-        UploadImage(URL.createObjectURL(this.files[0]));
-      }
-    });
+
+// add event listener
+input.addEventListener('change', () => {
+    uploadFile(input.files[0]);
 });
+
+const uploadFile = (file) => {
+  //check file type
+  if(!['image/jpeg', 'image/gif', 'image/png'].includes(file.type))
+  {
+    console.log("Only images are allowed")
+    return;
+  }
+
+  //add file to a FormData object
+  const formData = new FormData();
+  formData.append(uploadFile, file);
+
+  //send POST request
+  fetch('/upload-image', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error(err));
+}
+
+
 
 function UploadImage(imgSource) {
   imgContainers.push(new ImgContainer("", imgSource, "", "", ""));
