@@ -37,7 +37,7 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   if (!enterCategory || /^\s*$/.test(enterCategory)) {
     this.className = "unfiltered";
   } else {
-    this.className = enterCategory;
+    this.className = enterCategory.toLowerCase();
   }
   this.imgSrc = imgSrc;
   this.altName = altName;
