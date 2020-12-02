@@ -47,6 +47,10 @@ h1 {
   width: 32%;
 
   display: none; /* Hide all elements by default */
+  
+   background-color: var(--bg-color-button-and-content-inactive);
+  border-radius: 7px;
+  margin: 0.2rem;
 }
 
 /* Clear floats after rows */
@@ -54,13 +58,6 @@ h1 {
   content: "";
   display: table;
   clear: both;
-}
-
-/* Content */
-.content {
-  background-color: var(--bg-color-button-and-content-inactive);
-  border-radius: 10px;
-  padding: 1rem;
 }
 
 /* The "show" class is added to the filtered elements */
@@ -106,6 +103,6 @@ h1 {
 }
 .pageLogo {
 display: block;
-margin-left: auto;
-margin-right: auto;
+margin: 0 auto;
+
 }
