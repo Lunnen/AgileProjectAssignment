@@ -20,6 +20,11 @@ function createFilterButtons() {
     }
   });
 
+  //Sorts the categories alphabetically.
+  filterChoice = Array.from(filterChoice).sort((a, b) => {
+    return a.localeCompare(b, "en", { sensitivity: "base" });
+  });
+
   /*
   Creates all the buttons needed, based on the array filterChoice,
    which gets its values from the main image array - imgContainers.

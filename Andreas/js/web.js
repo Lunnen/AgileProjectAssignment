@@ -70,7 +70,6 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
 }
 
 var imgContainers = []; // Array were IMG "cards" are stored.
-
 /* 
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 

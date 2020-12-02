@@ -41,19 +41,18 @@ h1 {
 
   display: none; /* Hide all elements by default */
 }
+/* Content */
+.content {
+  background-color: var(--bg-color-button-and-content-inactive);
+  border-radius: 10px;
+  padding: 0.4rem;
+}
 
 /* Clear floats after rows */
 .row:after {
   content: "";
   display: table;
   clear: both;
-}
-
-/* Content */
-.content {
-  background-color: var(--bg-color-button-and-content-inactive);
-  border-radius: 10px;
-  padding: 1rem;
 }
 
 /* The "show" class is added to the filtered elements */
@@ -63,6 +62,7 @@ h1 {
 
 .myBtnContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -71,7 +71,7 @@ h1 {
 #custom-button {
   border: 0.05em outset white;
   outline: none;
-  padding: 12px 16px;
+  padding: 0.75rem 1.25rem;
   background-color: var(--bg-color-button-and-content-inactive);
   cursor: pointer;
   text-transform: UPPERCASE;
@@ -82,14 +82,12 @@ h1 {
   background-color: var(--bg-color-button-hover);
 }
 
-.btn.active {
+.btn.active,
+#custom-button {
   background-color: var(--bg-color-button-active);
   color: white;
 }
-#custom-button {
-  background: var(--bg-color-button-active);
-  color: white;
-}
+
 #myForm {
   display: flex;
   justify-content: center;
