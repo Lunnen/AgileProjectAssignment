@@ -1,8 +1,8 @@
 /*----------------------------------------------------------------
 Image categories/filters
 Auto creates another button if imgContainers-array contains a new category name,
-if not it's only an "all" button.
-*/
+if not it's only an "all" button.*/
+
 let filterChoice = ["all"];
 
 createFilterButtons(); //Create the filter buttons
@@ -27,8 +27,7 @@ function createFilterButtons() {
 
   /*
   Creates all the buttons needed, based on the array filterChoice,
-   which gets its values from the main image array - imgContainers.
-   */
+   which gets its values from the main image array - imgContainers. */
   for (let i = 0; i < filterChoice.length; i++) {
     let filterBtn = document.createElement("button");
     filterBtn.className = "btn";
@@ -45,11 +44,24 @@ function createFilterButtons() {
 
     filterBtnContainer.appendChild(filterBtn);
   }
+
+  /*
+  Add active class to the current button (highlight it) */
+  var btns = filterBtnContainer.getElementsByClassName("btn");
+
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
 }
 /*----------------------------------------------------------------
 Filters which category to show. */
 
 filterSelection("all");
+
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("column");
@@ -82,16 +94,3 @@ function RemoveClass(element, name) {
   }
   element.className = arr1.join(" ");
 }
-
-/*-----------------------------------------------
-Add active class to the current button (highlight it) */
-var btns = filterBtnContainer.getElementsByClassName("btn");
-
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function () {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-//-----------------------------------------------
