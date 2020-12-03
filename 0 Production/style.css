@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 :root {
   --bg-color-body: #b1ddf5;
   --bg-color-button-and-content-inactive:  rgb(255, 255, 255);
@@ -33,8 +33,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
 }
-
-
 
 /* Add padding BETWEEN each column */
 .row,
@@ -107,113 +105,3 @@ display: block;
 margin: 0 auto;
 
 }
-=======
-:root {
-  --bg-color-body: #b1ddf5;
-  --bg-color-button-and-content-inactive:  rgb(255, 255, 255);
-  --bg-color-button-hover: rgb(146, 210, 249);
-  --bg-color-button-active: rgb(37, 101, 174);
-}
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--bg-color-body);
-  padding: 0.5rem;
-  font-family: Arial;
-}
-
-.main {
-  max-width: 1000px;
-  margin: auto;
- 
-}
-
-h1 {
-  font-size: 3rem;
-  word-break: break-all;
-}
-
-.row {
-  margin: 10px -16px;
-  display: -webkit-flex;
-  -webkit-flex-wrap: wrap;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-
-
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-  padding: 0.3rem;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 32%;
-
-  display: none; /* Hide all elements by default */
-  
-   background-color: var(--bg-color-button-and-content-inactive);
-  border-radius: 7px;
-  margin: 0.2rem;
-}
-
-/* Clear floats after rows */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* The "show" class is added to the filtered elements */
-.show {
-  display: block;
-}
-
-.myBtnContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Style the buttons */
-.btn,
-#custom-button {
-  border:2px outset #242f95;
-  outline:none;
-  padding: 12px 16px;
-  background-color: var(--bg-color-button-and-content-inactive);
-  cursor: pointer;
-  text-transform: UPPERCASE;
-  color: #f7b200;
-  font-weight: bold;
-  margin: 0.05rem;
-}
-
-.btn:hover {
-  background-color: var(--bg-color-button-hover);
-}
-
-.btn.active {
-  background-color: var(--bg-color-button-active);
-  color: white;
-}
-#custom-button {
-  background: var(--bg-color-button-active);
-  color: white;
-}
-#myForm {
-  display: flex;
-  justify-content: center;
-}
-.pageLogo {
-display: block;
-margin: 0 auto;
-
-}
->>>>>>> 57ab89cb6c38f773ebcff578fe8e0a21e8953a42
