@@ -2,7 +2,7 @@
 
 // Declare Elements
 let divMain = document.createElement("div");
-let pageTitle = document.createElement("h2");
+let pageLogo = document.createElement("img");
 let filterBtnContainer = document.createElement("div");
 let galleryMain = document.createElement("div");
 let uploadForm = document.createElement("form");
@@ -11,7 +11,7 @@ let uploadButton = document.createElement("button");
 
 // Put elements in these boxes on web-page
 document.body.appendChild(divMain);
-divMain.appendChild(pageTitle);
+divMain.appendChild(pageLogo);
 divMain.appendChild(filterBtnContainer);
 divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
@@ -19,7 +19,8 @@ uploadForm.appendChild(uploadButton);
 divMain.appendChild(galleryMain);
 
 // Text contents
-pageTitle.innerHTML = "Team 3 Gallery" + "<hr>";
+pageLogo.src = "meny/Fantastic.png";
+pageLogo.className = "pageLogo";
 galleryMain.className = "row";
 divMain.className = "main";
 filterBtnContainer.className = "myBtnContainer";

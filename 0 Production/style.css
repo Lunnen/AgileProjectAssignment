@@ -1,6 +1,6 @@
 :root {
-  --bg-color-body: #e4edf2;
-  --bg-color-button-and-content-inactive: rgba(187, 220, 240, 0.7);
+  --bg-color-body: #b1ddf5;
+  --bg-color-button-and-content-inactive:  rgb(255, 255, 255);
   --bg-color-button-hover: rgb(146, 210, 249);
   --bg-color-button-active: rgb(37, 101, 174);
 }
@@ -17,6 +17,7 @@ body {
 .main {
   max-width: 1000px;
   margin: auto;
+ 
 }
 
 h1 {
@@ -26,12 +27,13 @@ h1 {
 
 .row {
   margin: 10px -16px;
-
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
   display: flex;
   flex-wrap: wrap;
 }
+
+
 
 /* Add padding BETWEEN each column */
 .row,
@@ -45,8 +47,8 @@ h1 {
   width: 32%;
 
   display: none; /* Hide all elements by default */
-
-  background-color: var(--bg-color-button-and-content-inactive);
+  
+   background-color: var(--bg-color-button-and-content-inactive);
   border-radius: 7px;
   margin: 0.2rem;
 }
@@ -72,12 +74,14 @@ h1 {
 /* Style the buttons */
 .btn,
 #custom-button {
-  border: 0.05em outset white;
-  outline: none;
-  padding: 0.75rem 1.25rem;
+  border:2px outset #242f95;
+  outline:none;
+  padding: 12px 16px;
   background-color: var(--bg-color-button-and-content-inactive);
   cursor: pointer;
   text-transform: UPPERCASE;
+  color: #f7b200;
+  font-weight: bold;
   margin: 0.05rem;
 }
 
@@ -85,13 +89,20 @@ h1 {
   background-color: var(--bg-color-button-hover);
 }
 
-.btn.active,
-#custom-button {
+.btn.active {
   background-color: var(--bg-color-button-active);
   color: white;
 }
-
+#custom-button {
+  background: var(--bg-color-button-active);
+  color: white;
+}
 #myForm {
   display: flex;
   justify-content: center;
+}
+.pageLogo {
+display: block;
+margin: 0 auto;
+
 }
