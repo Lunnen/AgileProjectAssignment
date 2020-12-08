@@ -19,16 +19,16 @@ function showDataURI() {
   reader.onload = (e) => {
     imgContainers.push(
       new ImgContainer(
-        prompt("Enter Category", ""),
+        prompt("Enter Filter button Category: ", ""),
         e.target.result, //sets value of raw-data-input in src.
-        "",
-        "",
-        ""
+        prompt("Enter Alternative name (if image cannot load): ", ""),
+        prompt("Image title: ", ""),
+        prompt("Enter text to describe the image", "")
       )
     );
 
-    localStorage.setItem("pureData", JSON.stringify(pureData));
-    console.log("last pureData push: " + pureData[pureData.length - 1]);
+    localStorage.setItem("pureData", JSON.stringify(stringDataToSave)); //save the data locally as a string.
+
     filterSelection("all"); //updates rendering of images
     createFilterButtons(); //Create a new filter button, if needed
   };

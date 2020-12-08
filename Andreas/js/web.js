@@ -32,7 +32,7 @@ uploadButton.type = "button";
 uploadButton.id = "custom-button";
 uploadButton.textContent = "Upload an image";
 
-var pureData = [];
+var stringDataToSave = []; //used by localStorage
 
 // The object that creates a Card with text.
 function ImgContainer(enterCategory, imgSrc, altName, title, text) {
@@ -47,7 +47,7 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   this.title = title;
   this.text = text;
 
-  pureData.push(
+  stringDataToSave.push(
     //pushes raw data string to an array with just text-info, used by saveFunction.
     this.className,
     this.imgSrc,
@@ -83,7 +83,24 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
 
 var imgContainers = []; // Array were IMG "cards" are stored.
 
-/* 
+/*---------------------------------------------------
+Reads the localStorage data line by line and pushes it into imgContainer. */
+let local = JSON.parse(localStorage.getItem("pureData")) || [];
+
+if (local !== null) {
+  for (let i = 0; i < local.length; i = i + 5) {
+    imgContainers.push(
+      new ImgContainer(
+        local[i], //read & push Category value
+        local[i + 1], //read & push imgSrc
+        local[i + 2], //read & push altName
+        local[i + 3], //read & push Title value
+        local[i + 4] //read & push Text value
+      )
+    );
+  }
+}
+/*---------------------------------------------------
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
@@ -134,32 +151,3 @@ imgContainers.push(
     "URL FROM NET"
   )
 ); */
-
-let local = [];
-local = JSON.parse(localStorage.getItem("pureData"));
-alert(typeof local);
-
-//local.split(",");
-
-console.log("testing: " + local);
-
-if (local !== null) {
-  for (let i = 0; i < local.length; i = i + 5) {
-    console.log("local" + i + ": " + local[i]);
-
-    imgContainers.push(
-      new ImgContainer(
-        local[i], //read & push Category value
-        local[i + 1], //read & push imgSrc
-        local[i + 2], //read & push altName
-        local[i + 3], //read & push Category value
-        local[i + 4]
-      )
-    );
-  }
-}
-/*
-console.log("after hard push: " + imgContainers[imgContainers.length - 1]);
-console.log("pureData: " + pureData);
-
-console.log("last pureData push: " + pureData[pureData.length - 1]);*/
