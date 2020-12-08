@@ -32,18 +32,29 @@ uploadButton.type = "button";
 uploadButton.id = "custom-button";
 uploadButton.textContent = "Upload an image";
 
+var pureData = [];
+
 // The object that creates a Card with text.
 function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   //checking if a string is null/undefined, blank or contains only white-space.
   if (!enterCategory || /^\s*$/.test(enterCategory)) {
     this.className = "unfiltered";
   } else {
-    this.className = enterCategory.toLowerCase();
+    this.className = enterCategory; //toLowerCase();
   }
   this.imgSrc = imgSrc;
   this.altName = altName;
   this.title = title;
   this.text = text;
+
+  pureData.push(
+    //pushes raw data string to an array with just text-info, used by saveFunction.
+    this.className,
+    this.imgSrc,
+    this.altName,
+    this.title,
+    this.text
+  );
 
   let galleryCol = document.createElement("div");
   let galleryContent = document.createElement("div");
@@ -71,10 +82,13 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
 }
 
 var imgContainers = []; // Array were IMG "cards" are stored.
+
 /* 
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
+
+/*
 imgContainers.push(
   new ImgContainer(
     "Landscape",
@@ -119,4 +133,33 @@ imgContainers.push(
     "Petra",
     "URL FROM NET"
   )
-);
+); */
+
+let local = [];
+local = JSON.parse(localStorage.getItem("pureData"));
+alert(typeof local);
+
+//local.split(",");
+
+console.log("testing: " + local);
+
+if (local !== null) {
+  for (let i = 0; i < local.length; i = i + 5) {
+    console.log("local" + i + ": " + local[i]);
+
+    imgContainers.push(
+      new ImgContainer(
+        local[i], //read & push Category value
+        local[i + 1], //read & push imgSrc
+        local[i + 2], //read & push altName
+        local[i + 3], //read & push Category value
+        local[i + 4]
+      )
+    );
+  }
+}
+/*
+console.log("after hard push: " + imgContainers[imgContainers.length - 1]);
+console.log("pureData: " + pureData);
+
+console.log("last pureData push: " + pureData[pureData.length - 1]);*/

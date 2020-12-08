@@ -26,8 +26,11 @@ function showDataURI() {
         ""
       )
     );
-    createFilterButtons(); //Create a new filter button, if needed
+
+    localStorage.setItem("pureData", JSON.stringify(pureData));
+    console.log("last pureData push: " + pureData[pureData.length - 1]);
     filterSelection("all"); //updates rendering of images
+    createFilterButtons(); //Create a new filter button, if needed
   };
   reader.readAsDataURL(file);
 }
