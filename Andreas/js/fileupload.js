@@ -19,11 +19,11 @@ function showDataURI() {
   reader.onload = (e) => {
     imgContainers.push(
       new ImgContainer(
-        prompt("Enter Filter button Category: ", ""),
+        prompt("Image category: ", ""),
         e.target.result, //sets value of raw-data-input in src.
-        prompt("Enter Alternative name (if image cannot load): ", ""),
-        prompt("Image title: ", ""),
-        prompt("Enter text to describe the image", "")
+        prompt("Alternative name (if image cannot load): ", ""),
+        prompt("Title: ", ""),
+        prompt("Description: ", "")
       )
     );
 
