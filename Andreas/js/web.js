@@ -19,7 +19,7 @@ uploadForm.appendChild(uploadButton);
 divMain.appendChild(galleryMain);
 
 // Text contents
-pageLogo.src = "meny/Fantastic.png";
+pageLogo.src = "./meny/Fantastic.png";
 pageLogo.className = "pageLogo";
 galleryMain.className = "row";
 divMain.className = "main";
