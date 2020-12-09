@@ -28,6 +28,7 @@ function showDataURI() {
     );
     createFilterButtons(); //Create a new filter button, if needed
     filterSelection("all"); //updates rendering of images
+    updateItems(); //updates items in the "dragtodelete"
   };
   reader.readAsDataURL(file);
 }
