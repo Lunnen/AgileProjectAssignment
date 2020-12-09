@@ -1,4 +1,4 @@
-//*----------------------------------------------------------------
+/*----------------------------------------------------------------
 Image categories/filters
 Auto creates another button if imgContainers-array contains a new category name,
 if not it's only an "all" button.*/
