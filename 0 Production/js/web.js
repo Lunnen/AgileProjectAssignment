@@ -21,7 +21,7 @@ divMain.appendChild(dropToDelete);
 divMain.appendChild(galleryMain);
 
 // Text contents
-pageLogo.src = "meny/Fantastic.png";
+pageLogo.src = "./meny/Fantastic.png";
 pageLogo.className = "pageLogo";
 galleryMain.className = "row";
 divMain.className = "main";
@@ -36,6 +36,8 @@ uploadButton.textContent = "Upload an image";
 dropToDelete.id = "delete";
 dropToDelete.textContent = "Delete";
 
+var stringDataToSave = []; //used by localStorage
+
 // The object that creates a Card with text.
 function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   //checking if a string is null/undefined, blank or contains only white-space.
@@ -49,23 +51,31 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   this.title = title;
   this.text = text;
 
-  let galleryCard = document.createElement("div");
+  stringDataToSave.push(
+    //pushes raw data string to an array with just text-info, used by saveFunction.
+    this.className,
+    this.imgSrc,
+    this.altName,
+    this.title,
+    this.text
+  );
+
+  let galleryCard  = document.createElement("div");
   let galleryContent = document.createElement("div");
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
 
   galleryContent.className = "content";
-  galleryCard.className = "column " + this.className;
-  galleryCard.draggable = "true";
+  galleryCard .className = "column " + this.className;
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
-  galleryTitle.textContent = title;  
+  galleryTitle.textContent = title;
   galleryText.textContent = text;
 
   galleryMain.appendChild(galleryCard);
-  galleryCard.appendChild(galleryContent);
+  galleryCard .appendChild(galleryContent);
   galleryContent.appendChild(galleryIMG);
   galleryContent.appendChild(galleryTitle);
   galleryContent.appendChild(galleryText);
@@ -76,10 +86,30 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
 }
 
 var imgContainers = []; // Array were IMG "cards" are stored.
-/* 
+
+/*---------------------------------------------------
+Reads the localStorage data line by line and pushes it into imgContainer. */
+let local = JSON.parse(localStorage.getItem("pureData")) || [];
+
+if (local !== null) {
+  for (let i = 0; i < local.length; i = i + 5) {
+    imgContainers.push(
+      new ImgContainer(
+        local[i], //read & push Category value
+        local[i + 1], //read & push imgSrc
+        local[i + 2], //read & push altName
+        local[i + 3], //read & push Title value
+        local[i + 4] //read & push Text value
+      )
+    );
+  }
+}
+/*---------------------------------------------------
 This is where you push the pictures into the array (imgContainers), 
 which then renders them on page 
 */
+
+/*
 imgContainers.push(
   new ImgContainer(
     "Landscape",
@@ -124,4 +154,4 @@ imgContainers.push(
     "Petra",
     "URL FROM NET"
   )
-);
+); */
