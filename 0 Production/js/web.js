@@ -60,14 +60,15 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
     this.text
   );
 
-  let galleryCard  = document.createElement("div");
+  let galleryCard = document.createElement("div");
   let galleryContent = document.createElement("div");
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
 
   galleryContent.className = "content";
-  galleryCard .className = "column " + this.className;
+  galleryCard.className = "column " + this.className;
+  galleryCard.draggable = "true";
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
@@ -75,7 +76,7 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   galleryText.textContent = text;
 
   galleryMain.appendChild(galleryCard);
-  galleryCard .appendChild(galleryContent);
+  galleryCard.appendChild(galleryContent);
   galleryContent.appendChild(galleryIMG);
   galleryContent.appendChild(galleryTitle);
   galleryContent.appendChild(galleryText);
