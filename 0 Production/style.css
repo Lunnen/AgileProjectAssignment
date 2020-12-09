@@ -104,3 +104,10 @@ h1 {
   max-height: 100%;
   max-width: 100%;
 }
+
+#delete.hint {
+  border: 6px solid red;
+}
+#delete.active {
+  background-color: red;
+} 

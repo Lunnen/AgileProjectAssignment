@@ -8,6 +8,7 @@ let galleryMain = document.createElement("div");
 let uploadForm = document.createElement("form");
 let uploadInput = document.createElement("input");
 let uploadButton = document.createElement("button");
+let dropToDelete = document.createElement("div");
 
 // Put elements in these boxes on web-page
 document.body.appendChild(divMain);
@@ -16,6 +17,7 @@ divMain.appendChild(filterBtnContainer);
 divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
 uploadForm.appendChild(uploadButton);
+divMain.appendChild(dropToDelete);
 divMain.appendChild(galleryMain);
 
 // Text contents
@@ -31,6 +33,8 @@ uploadInput.hidden = "hidden";
 uploadButton.type = "button";
 uploadButton.id = "custom-button";
 uploadButton.textContent = "Upload an image";
+dropToDelete.id = "delete";
+dropToDelete.textContent = "Delete";
 
 var stringDataToSave = []; //used by localStorage
 
@@ -56,22 +60,22 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
     this.text
   );
 
-  let galleryCol = document.createElement("div");
+  let galleryCard  = document.createElement("div");
   let galleryContent = document.createElement("div");
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
 
   galleryContent.className = "content";
-  galleryCol.className = "column " + this.className;
+  galleryCard .className = "column " + this.className;
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
   galleryTitle.textContent = title;
   galleryText.textContent = text;
 
-  galleryMain.appendChild(galleryCol);
-  galleryCol.appendChild(galleryContent);
+  galleryMain.appendChild(galleryCard);
+  galleryCard .appendChild(galleryContent);
   galleryContent.appendChild(galleryIMG);
   galleryContent.appendChild(galleryTitle);
   galleryContent.appendChild(galleryText);
