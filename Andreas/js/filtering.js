@@ -1,3 +1,4 @@
+"use strict";
 /*----------------------------------------------------------------
 Image categories/filters
 Auto creates another button if imgContainers-array contains a new category name,
