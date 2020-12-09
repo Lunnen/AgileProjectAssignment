@@ -19,19 +19,16 @@ function showDataURI() {
   reader.onload = (e) => {
     imgContainers.push(
       new ImgContainer(
-        prompt("Image category: ", "NewFilter"),
+        prompt("Enter Category", ""),
         e.target.result, //sets value of raw-data-input in src.
-        prompt("Alternative name (if image cannot load): ", "alt"),
-        prompt("Title: ", "Title"),
-        prompt("Description: ", "Description")
+        "",
+        "",
+        ""
       )
     );
-
-    localStorage.setItem("pureData", JSON.stringify(stringDataToSave)); //save the data locally as a string.
-
-    filterSelection("all"); //updates rendering of images
     createFilterButtons(); //Create a new filter button, if needed
-    updateItems(); //updates items in the "dropEvents"
+    filterSelection("all"); //updates rendering of images
+    updateItems(); //updates items in the "dragtodelete"
   };
   reader.readAsDataURL(file);
 }

@@ -1,13 +1,16 @@
-let dragItems;
-let dropToChangeFilter;
-updateItems();
+//galleryCard  - drag-item
+//dropToDelete - dropzone
+//this is a new comment
+//get galleryCard
+let dragItems = document.getElementsByClassName("column");
+let dropToChangeFilter = document.getElementsByClassName("btn");
 
 function updateItems() {
   dragItems = document.getElementsByClassName("column");
   dropToChangeFilter = document.getElementsByClassName("btn");
-  console.log(dragItems.length);
+}
 
-  for (let item of dragItems) {
+for (let item of dragItems) {
     draggedItem = null;
 
     item.addEventListener("dragstart", function () {
@@ -50,6 +53,3 @@ function updateItems() {
         dropToDelete.classList.remove("active");
     })
 }
-
-}
-
