@@ -7,8 +7,8 @@ let filterBtnContainer = document.createElement("div");
 let galleryMain = document.createElement("div");
 let uploadForm = document.createElement("form");
 let uploadInput = document.createElement("input");
-let uploadButton = document.createElement("button");
-let dropToDelete = document.createElement("div");
+let uploadButton = document.createElement("img");
+let dropToDelete = document.createElement("img");
 
 // Put elements in these boxes on web-page
 document.body.appendChild(divMain);
@@ -20,7 +20,7 @@ uploadForm.appendChild(uploadButton);
 divMain.appendChild(dropToDelete);
 divMain.appendChild(galleryMain);
 
-// Text contents
+// Text + img content
 pageLogo.src = "./meny/Fantastic.png";
 pageLogo.className = "pageLogo";
 galleryMain.className = "row";
@@ -30,11 +30,11 @@ uploadForm.id = "myForm";
 uploadInput.type = "file";
 uploadInput.id = "inputFile";
 uploadInput.hidden = "hidden";
-uploadButton.type = "button";
-uploadButton.id = "custom-button";
+uploadButton.src = "./meny/upload.png";
+uploadButton.id="custom-button"
 uploadButton.textContent = "Upload an image";
-dropToDelete.id = "delete";
-dropToDelete.textContent = "Delete";
+dropToDelete.src = "./meny/delete.png";
+dropToDelete.className = "dropToDelete";
 
 var stringDataToSave = []; //used by localStorage
 
