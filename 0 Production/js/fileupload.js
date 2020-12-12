@@ -32,6 +32,7 @@ function showDataURI() {
     filterSelection("all"); //updates rendering of images
     createFilterButtons(); //Create a new filter button, if needed
     updateItems(); //updates items in the "dropEvents"
+   clear(); // Remove items in the "dropEvent"
   };
   reader.readAsDataURL(file);
 }
