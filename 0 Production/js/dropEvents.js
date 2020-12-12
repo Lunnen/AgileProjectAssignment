@@ -48,6 +48,8 @@ function updateItems() {
     item.addEventListener("dragend", function () {
         dropToDelete.classList.remove("hint");
         dropToDelete.classList.remove("active");
+        window.localStorage.clear();
+
     })
 }
 

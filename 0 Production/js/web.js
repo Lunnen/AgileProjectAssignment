@@ -9,7 +9,7 @@ let uploadForm = document.createElement("form");
 let uploadInput = document.createElement("input");
 let uploadButton = document.createElement("img");
 let dropToDelete = document.createElement("img");
-
+//let dropToDeleteHover = document.createElement("img");
 // Put elements in these boxes on web-page
 document.body.appendChild(divMain);
 divMain.appendChild(pageLogo);
@@ -18,10 +18,11 @@ divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
 uploadForm.appendChild(uploadButton);
 divMain.appendChild(dropToDelete);
+//divMain.appendChild(dropToDeleteHover);
 divMain.appendChild(galleryMain);
 
 // Text + img content
-pageLogo.src = "./meny/Fantastic.png";
+pageLogo.src = "./meny/headloga.png";
 pageLogo.className = "pageLogo";
 galleryMain.className = "row";
 divMain.className = "main";
@@ -34,8 +35,9 @@ uploadButton.src = "./meny/upload.png";
 uploadButton.id="custom-button"
 uploadButton.textContent = "Upload an image";
 dropToDelete.src = "./meny/delete.png";
-dropToDelete.className = "dropToDelete";
-
+dropToDelete.className= "dropToDelete";
+//dropToDeleteHover.src = "./meny/deletehover.png";
+//dropToDeleteHover.className= "dropToDeleteHover";
 var stringDataToSave = []; //used by localStorage
 
 // The object that creates a Card with text.
