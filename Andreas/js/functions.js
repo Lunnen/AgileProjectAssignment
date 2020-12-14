@@ -1,27 +1,26 @@
-//"use strict";
+"use strict";
 //----------------------------------------------------------------
-
-//TEST AREA
-
 
 loadData();
 
 function loadData() {
-  // Read & push Category value, image source... into the "card" container (imgContainers)
-  
-  if(localStorage.getItem("cardObjects") != null){
-  let localData = JSON.parse(localStorage.getItem("cardObjects"));
+  // Read & push Category value, image source... from localStorage into the "card" container (imgContainers)
 
-  for (let { className, imgSrc, altName, title, text } of localData) {
-    imgContainers.push(
-      new ImgContainer(className, imgSrc, altName, title, text)
-    );
-  }
+  if (localStorage.getItem("cardObjects") != null) {
+    let localData = JSON.parse(localStorage.getItem("cardObjects"));
+
+    for (let { className, imgSrc, altName, title, text } of localData) {
+      imgContainers.push(
+        new ImgContainer(className, imgSrc, altName, title, text)
+      );
+    }
   }
 }
 function saveData() {
+  //Saves imgContainer as a string-object in localStorage.
   localStorage.setItem("cardObjects", JSON.stringify(imgContainers));
 }
+
 /*----------------------------------------------------------------
 Image categories/filters
 Auto creates another button if imgContainers-array contains a new category name,
@@ -118,4 +117,4 @@ function RemoveClass(element, name) {
   }
   element.className = arr1.join(" ");
 }
-//--------------------------------------------------------
+//----------------------------------------------------------------
