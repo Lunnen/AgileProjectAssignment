@@ -1,4 +1,5 @@
-//"use strict";
+//--------------------------------------------------------
+"use strict";
 
 let dragItems;
 let dropToChangeFilter;
@@ -9,12 +10,9 @@ function updateItems() {
   dragItems = document.getElementsByClassName("column");
   dropToChangeFilter = document.getElementsByClassName("btn");
 
-  // TEST PURPOSES
-  console.log(dragItems.length);
-  console.log(dragItems);
 
   for (let item of dragItems) {
-    let draggedItem = null;
+    var draggedItem = null;
 
     item.addEventListener("dragstart", function () {
       draggedItem = this;
@@ -36,8 +34,19 @@ function updateItems() {
     dropToDelete.addEventListener("drop", function (evt) {
       evt.preventDefault();
       draggedItem.remove();
+	  
+	    // TEST PURPOSES
+  for(let i = 0; i < dragItems.length; i++){
+  
+     console.log(dragItems[i].className.split(' ')[1]); //CategoryName
+  //console.log(dragItems[0].childNodes[0].children[0].src);
+  console.log(dragItems[i].childNodes[0].children[0].alt);
+ console.log(dragItems[i].childNodes[0].children[1].textContent);
+console.log(dragItems[i].childNodes[0].children[2].textContent);
 
-      console.log(imgContainers);
+}
+//--------------------------
+
     });
 
     for (let filter of dropToChangeFilter) {
@@ -57,3 +66,4 @@ function updateItems() {
     });
   }
 }
+//--------------------------------------------------------
