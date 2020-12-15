@@ -18,6 +18,8 @@ divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
 uploadForm.appendChild(uploadButton);
 divMain.appendChild(dropToDelete);
+//dropToDelete.onmouseenter=function(){dropToDelete.src="./meny/deletehover.png"}
+//dropToDelete.onmouseout=function(){dropToDelete.src="./meny/delete.png"}
 //divMain.appendChild(dropToDeleteHover);
 divMain.appendChild(galleryMain);
 

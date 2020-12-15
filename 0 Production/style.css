@@ -124,10 +124,3 @@ border-color:rgb(0, 0, 0);
     max-width: 100%;
     }
 /* delete Drop zone styling */
-}
-#delete.hint {
-  border: 6px solid red;
-}
-#delete.active {
-  background-color: red;
-} 

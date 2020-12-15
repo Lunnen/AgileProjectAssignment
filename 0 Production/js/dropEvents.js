@@ -16,14 +16,17 @@ function updateItems() {
     item.addEventListener("dragstart", function () {
       draggedItem = this;
       dropToDelete.classList.add("hint");
+      dropToDelete.src ="./meny/deletehint.png";
     });
 
     dropToDelete.addEventListener("dragenter", function () {
       dropToDelete.classList.add("active");
+      dropToDelete.src ="./meny/deletehover.png";
     });
 
     dropToDelete.addEventListener("dragleave", function () {
       dropToDelete.classList.remove("active");
+      dropToDelete.src ="./meny/delete.png";
     });
 
     dropToDelete.addEventListener("dragover", function (evt) {
