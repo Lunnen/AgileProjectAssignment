@@ -1,3 +1,4 @@
+"use strict";
 /*-----------------------------------------------------
 Replace "input type=file" button with a custom button
 */
@@ -21,14 +22,13 @@ function showDataURI() {
       new ImgContainer(
         prompt("Image category: ", "NewFilter"),
         e.target.result, //sets value of raw-data-input in src.
-        prompt("Alternative name (if image cannot load): ", "alt"),
+        parseInt(Date.now() * Math.random()), //prompt("Alternative name (if image cannot load): ", "alt"),
         prompt("Title: ", "Title"),
         prompt("Description: ", "Description")
       )
     );
 
-    localStorage.setItem("pureData", JSON.stringify(stringDataToSave)); //save the data locally as a string.
-
+    saveData(); //Saves everything in imgContainers to LocalStorage inside client browser.
     filterSelection("all"); //updates rendering of images
     createFilterButtons(); //Create a new filter button, if needed
     updateItems(); //updates items in the "dropEvents"
