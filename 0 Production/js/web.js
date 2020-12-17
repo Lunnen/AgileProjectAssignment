@@ -144,7 +144,7 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text, editBtn) {
 var imgContainers = []; // Array were IMG "cards" are stored.
 
 /*
- Compare galleryCard to array, remove those that does not have the same ID.
+ Compare galleryCard to array, keep those that does not have the same ID.
  */
 function compareSyncArray(inputToCompare) {
   let uniqueId = inputToCompare.childNodes[0].children[0].alt; //Check the unique altName of item to be removed.
