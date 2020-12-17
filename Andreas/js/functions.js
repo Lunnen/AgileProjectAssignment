@@ -85,21 +85,22 @@ Filters which category to show. */
 
 filterSelection("all");
 
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("column");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
-  }
+function filterSelection(input) {
+  let column;
+  column = document.getElementsByClassName("column");
+  if (input == "all") input = "";
+  for (let i = 0; i < column.length; i++) {
+    RemoveClass(column[i], "show");
+    if (column[i].className.indexOf(input) > -1) AddClass(column[i], "show");
+  } //If column[i]'s categoryName is indexed, send column-values to addClass.
 }
 
 function AddClass(element, name) {
-  var i, arr1, arr2;
+  let arr1;
+  let arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
+  for (let i = 0; i < arr2.length; i++) {
     if (arr1.indexOf(arr2[i]) == -1) {
       element.className += " " + arr2[i];
     }
@@ -107,14 +108,16 @@ function AddClass(element, name) {
 }
 
 function RemoveClass(element, name) {
-  var i, arr1, arr2;
+  var arr1;
+  var arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
+  for (let i = 0; i < arr2.length; i++) {
     while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
+      arr1.splice(arr1.indexOf(arr2[i]), 1); //Remove one part of indexed array.
     }
   }
   element.className = arr1.join(" ");
 }
 //----------------------------------------------------------------
+
