@@ -31,7 +31,11 @@ function showDataURI() {
     saveData(); //Saves everything in imgContainers to LocalStorage inside client browser.
     filterSelection("all"); //updates rendering of images
     createFilterButtons(); //Create a new filter button, if needed
+    
+      };
+    reader.readAsDataURL(file);
     updateItems(); //updates items in the "dropEvents"
-  };
-  reader.readAsDataURL(file);
-}
+    
+
+  }
+

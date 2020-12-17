@@ -9,9 +9,9 @@ function loadData() {
   if (localStorage.getItem("cardObjects") != null) {
     let localData = JSON.parse(localStorage.getItem("cardObjects"));
 
-    for (let { className, imgSrc, altName, title, text } of localData) {
+    for (let { className, imgSrc, altName, title, text,editButton} of localData) {
       imgContainers.push(
-        new ImgContainer(className, imgSrc, altName, title, text)
+        new ImgContainer(className, imgSrc, altName, title, text, editButton)
       );
     }
   }
@@ -19,6 +19,7 @@ function loadData() {
 function saveData() {
   //Saves imgContainer as a string-object in localStorage.
   localStorage.setItem("cardObjects", JSON.stringify(imgContainers));
+  
 }
 
 /*----------------------------------------------------------------

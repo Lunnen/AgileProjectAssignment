@@ -123,4 +123,11 @@ border-color:rgb(0, 0, 0);
     max-height: 100%;
     max-width: 100%;
     }
-/* delete Drop zone styling */
+.editButton {
+  display: right;
+  margin: 0 auto;
+  max-height:35px ;
+  max-width: 35%;
+
+
+}
