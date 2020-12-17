@@ -119,5 +119,12 @@ function RemoveClass(element, name) {
   }
   element.className = arr1.join(" ");
 }
-//----------------------------------------------------------------
 
+/* 
+Randomized number for img alt tag - used for sync between 
+dropEvent & edit buttons to the array of imgContainers. 
+*/
+function randomNrID() {
+  return Date.now() * Math.random();
+}
+//----------------------------------------------------------------
