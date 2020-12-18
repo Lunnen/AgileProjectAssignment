@@ -6,7 +6,7 @@ loadData();
 function loadData() {
   // Read & push Category value, image source... from localStorage into the "card" container (imgContainers)
 
-  if (localStorage.getItem("cardObjects") != null) {
+  if (localStorage.getItem("cardObjects")) {
     let localData = JSON.parse(localStorage.getItem("cardObjects"));
 
     for (let { imgSrc, altName, title, text } of localData) {

@@ -8,6 +8,9 @@
   box-sizing: border-box;
 }
 
+h4::first-letter {
+	text-transform: UPPERCASE;
+}
 body {
   background-color: var(--bg-color-body);
   padding: 0.5rem;
