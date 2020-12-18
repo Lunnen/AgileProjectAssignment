@@ -3,6 +3,7 @@
 
 let dragItems;
 let dropToChangeFilter;
+let draging = false;
 
 updateItems();
 
@@ -17,6 +18,7 @@ function updateItems() {
       draggedItem = this;
       dropToDelete.classList.add("hint");
       dropToDelete.src = "./meny/deletehint.png";
+      draging = true;
     });
 
     dropToDelete.addEventListener("dragenter", function () {
@@ -34,20 +36,24 @@ function updateItems() {
     });
 
     dropToDelete.addEventListener("drop", function (evt) {
-      evt.preventDefault();
-      draggedItem.remove(); //remove dragged item from being visible
+        evt.preventDefault();
+      if (draging) {
+        draggedItem.remove(); //remove dragged item from being visible
 
-      /* This is where the Drop removal syncs to the array of imgContainers, 
-      by linking the img.altname to array contents.
-      Without this, the action of removal will not be there upon refresh of browser.
-      */
-      compareSyncArray(draggedItem);
-
-      location.reload(); //Reload Browser DOM.
-      saveData();
-      updateItems(); //updates items in the "dropEvents"
-      filterSelection("all");
-      createFilterButtons(); //Create a new filter button, if needed
+        /* This is where the Drop removal syncs to the array of imgContainers, 
+        by linking the img.altname to array contents.
+        Without this, the action of removal will not be there upon refresh of browser.
+        */
+        console.log("test");
+        compareSyncArray(draggedItem);
+  
+        location.reload(); //Reload Browser DOM.
+        saveData();
+        updateItems(); //updates items in the "dropEvents"
+        filterSelection("all");
+        createFilterButtons(); //Create a new filter button, if needed
+        draging = false;
+      } 
     });
 
     for (let filter of dropToChangeFilter) {
@@ -56,8 +62,11 @@ function updateItems() {
       });
 
       filter.addEventListener("drop", function (evt) {
-        evt.preventDefault();
-        draggedItem.className = "column " + filter.textContent + " show";
+        if (draging) {
+          evt.preventDefault();
+          draggedItem.className = "column " + filter.textContent + " show";
+          draging = false;
+        }
       });
     }
 
