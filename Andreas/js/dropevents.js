@@ -37,7 +37,8 @@ function updateItems() {
       evt.preventDefault();
       draggedItem.remove(); //remove dragged item from being visible
 
-      /* This is where the Drop removal syncs to the array of imgContainers, by linking the img.altname to array contents.
+      /* This is where the Drop removal syncs to the array of imgContainers, 
+      by linking the img.altname to array contents.
       Without this, the action of removal will not be there upon refresh of browser.
       */
       compareSyncArray(draggedItem);

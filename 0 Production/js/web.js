@@ -18,7 +18,6 @@ divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
 uploadForm.appendChild(uploadButton);
 divMain.appendChild(dropToDelete);
-
 divMain.appendChild(galleryMain);
 
 // Text + img content
@@ -45,7 +44,7 @@ function ImgContainer(imgSrc, altName, title, text) {
   if (!title || /^\s*$/.test(title)) {
     this.title = "unfiltered";
   } else {
-    this.title = title.toLowerCase();
+    this.title = title;
   }
   this.text = text;
 
@@ -125,8 +124,8 @@ function ImgContainer(imgSrc, altName, title, text) {
           galleryText.innerText
         )
       );
-      location.reload();
       saveData();
+      location.reload();
     }
   };
 

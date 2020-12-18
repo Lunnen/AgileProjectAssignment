@@ -9,10 +9,8 @@ function loadData() {
   if (localStorage.getItem("cardObjects") != null) {
     let localData = JSON.parse(localStorage.getItem("cardObjects"));
 
-    for (let { className, imgSrc, altName, title, text } of localData) {
-      imgContainers.push(
-        new ImgContainer(className, imgSrc, altName, title, text)
-      );
+    for (let { imgSrc, altName, title, text } of localData) {
+      imgContainers.push(new ImgContainer(imgSrc, altName, title, text));
     }
   }
 }
@@ -101,9 +99,7 @@ function AddClass(element, name) {
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
   for (let i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += " " + arr2[i];
-    }
+    if (arr1.indexOf(arr2[i]) == -1) element.className += " " + arr2[i];
   }
 }
 

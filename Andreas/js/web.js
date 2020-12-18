@@ -38,18 +38,16 @@ dropToDelete.src = "./meny/delete.png";
 dropToDelete.className = "dropToDelete";
 
 // The object that creates a Card with text.
-function ImgContainer(enterCategory, imgSrc, altName, title, text, editBtn) {
-  //checking if a string is null/undefined, blank or contains only white-space.
-  if (!enterCategory || /^\s*$/.test(enterCategory)) {
-    this.className = "unfiltered";
-  } else {
-    this.className = enterCategory.toLowerCase();
-  }
+function ImgContainer(imgSrc, altName, title, text) {
   this.imgSrc = imgSrc;
   this.altName = altName;
-  this.title = title;
+  //checking if a string is null/undefined, blank or contains only white-space.
+  if (!title || /^\s*$/.test(title)) {
+    this.title = "unfiltered";
+  } else {
+    this.title = title.toLowerCase();
+  }
   this.text = text;
-  this.editButton = editBtn;
 
   let galleryCard = document.createElement("div");
   let galleryContent = document.createElement("div");
@@ -61,7 +59,7 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text, editBtn) {
   let editButton = document.createElement("img");
 
   galleryContent.className = "content";
-  galleryCard.className = "column " + this.className;
+  galleryCard.className = "column " + this.title;
   galleryCard.draggable = "true";
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
@@ -105,14 +103,14 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text, editBtn) {
     }
     //Save edits and add them to text/title
     else {
-      galleryTitle.innerText = titleInput.value;
-      galleryText.innerText = textInput.value;
+      //Only change title or text if there's a new value.
+      if (titleInput.value) galleryTitle.innerText = titleInput.value;
+      if (textInput.value) galleryText.innerText = textInput.value;
 
       titleInput.hidden = true;
       textInput.hidden = true;
       galleryTitle.hidden = false;
       galleryText.hidden = false;
-
       editMode = false;
       //------------------------------
 
@@ -121,33 +119,30 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text, editBtn) {
       //Push "new" info (the edited one)
       imgContainers.push(
         new ImgContainer(
-          enterCategory,
           imgSrc,
           randomNrID(),
-          titleInput.value,
-          textInput.value
+          galleryTitle.innerText,
+          galleryText.innerText
         )
       );
       location.reload();
       saveData();
-
-      //-----------------------s-------
     }
   };
 
   //------------------------------------------------------------------
 
   this.getImgCategory = function () {
-    return this.className;
+    return this.title;
   };
 }
 var imgContainers = []; // Array were IMG "cards" are stored.
 
 /*
- Compare galleryCard to array, remove those that does not have the same ID.
+ Compare galleryCard to array, keep those that does not have the same ID.
  */
 function compareSyncArray(inputToCompare) {
-  let uniqueId = inputToCompare.childNodes[0].children[0].alt; //Check the unique altName of item to be removed.
+  let uniqueId = inputToCompare.childNodes[0].children[0].alt; //Check the unique altName of input item.
 
   //Find the objects in imgContainers where the ID DOEST NOT exist.
   let findObjectWithID = imgContainers.filter(
@@ -156,9 +151,7 @@ function compareSyncArray(inputToCompare) {
 
   imgContainers = [];
 
-  for (let { className, imgSrc, altName, title, text } of findObjectWithID) {
-    imgContainers.push(
-      new ImgContainer(className, imgSrc, altName, title, text)
-    );
+  for (let { imgSrc, altName, title, text } of findObjectWithID) {
+    imgContainers.push(new ImgContainer(imgSrc, altName, title, text));
   }
 }
