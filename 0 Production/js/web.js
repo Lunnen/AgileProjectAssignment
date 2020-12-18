@@ -18,6 +18,7 @@ divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
 uploadForm.appendChild(uploadButton);
 divMain.appendChild(dropToDelete);
+
 divMain.appendChild(galleryMain);
 
 // Text + img content
@@ -44,7 +45,7 @@ function ImgContainer(imgSrc, altName, title, text) {
   if (!title || /^\s*$/.test(title)) {
     this.title = "unfiltered";
   } else {
-    this.title = title;
+    this.title = title.toLowerCase();
   }
   this.text = text;
 
@@ -53,8 +54,6 @@ function ImgContainer(imgSrc, altName, title, text) {
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
-  let titleInput = document.createElement("input");
-  let textInput = document.createElement("input");
   let editButton = document.createElement("img");
 
   galleryContent.className = "content";
@@ -73,15 +72,21 @@ function ImgContainer(imgSrc, altName, title, text) {
   galleryContent.appendChild(galleryIMG);
   galleryContent.appendChild(galleryTitle);
   galleryContent.appendChild(galleryText);
-  galleryContent.appendChild(editButton);
 
-  //EditButton--------------------------------------------------------
+
+  //EditButton------------------------------------------------------------------------------------------------------------
+  let titleInput = document.createElement("input");
+  let textInput = document.createElement("input");
+  titleInput.type = "text";
+  textInput.type = "text";
+  galleryContent.appendChild(titleInput);
+  galleryContent.appendChild(textInput);
+  galleryContent.appendChild(editButton);
+  
   titleInput.hidden = true;
   textInput.hidden = true;
   let editMode = false;
 
-  galleryContent.appendChild(titleInput);
-  galleryContent.appendChild(textInput);
 
   editButton.addEventListener("click", function () {
     galleryCard.clicked();
@@ -91,6 +96,8 @@ function ImgContainer(imgSrc, altName, title, text) {
     //Enter edit mode
     if (!editMode) {
       editMode = true;
+      //change edit button to a save button
+      editButton.src = "./meny/saveEdits.png";
 
       titleInput.hidden = false;
       textInput.hidden = false;
@@ -111,6 +118,8 @@ function ImgContainer(imgSrc, altName, title, text) {
       galleryTitle.hidden = false;
       galleryText.hidden = false;
       editMode = false;
+      //changes save button to edit button
+      editButton.src = "./meny/edit.png";
       //------------------------------
 
       compareSyncArray(galleryCard);
@@ -124,12 +133,12 @@ function ImgContainer(imgSrc, altName, title, text) {
           galleryText.innerText
         )
       );
-      saveData();
       location.reload();
+      saveData();
     }
   };
 
-  //------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------------------------
 
   this.getImgCategory = function () {
     return this.title;

@@ -123,11 +123,29 @@ border-color:rgb(0, 0, 0);
     max-height: 100%;
     max-width: 100%;
     }
-/* delete Drop zone styling */
+.editButton {
+  display: right;
+  margin: 0 auto;
+  max-height:35px ;
+  max-width: 35%;
+
 }
-#delete.hint {
-  border: 6px solid red;
+
+/* Styling for Input Fields */
+input[type=text] {
+  width: 100%;
+  padding: 8px 10px;
+  margin: 3px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+
+  font-size:14px;
 }
-#delete.active {
-  background-color: red;
-} 
+
+input[type=text]:focus {
+  border: 3px solid #555;
+  font-weight: bold;
+}

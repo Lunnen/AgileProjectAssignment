@@ -9,7 +9,7 @@ let uploadForm = document.createElement("form");
 let uploadInput = document.createElement("input");
 let uploadButton = document.createElement("img");
 let dropToDelete = document.createElement("img");
-//let dropToDeleteHover = document.createElement("img");
+
 // Put elements in these boxes on web-page
 document.body.appendChild(divMain);
 divMain.appendChild(pageLogo);
@@ -18,7 +18,7 @@ divMain.appendChild(uploadForm);
 uploadForm.appendChild(uploadInput);
 uploadForm.appendChild(uploadButton);
 divMain.appendChild(dropToDelete);
-//divMain.appendChild(dropToDeleteHover);
+
 divMain.appendChild(galleryMain);
 
 // Text + img content
@@ -36,20 +36,17 @@ uploadButton.id = "custom-button";
 uploadButton.textContent = "Upload an image";
 dropToDelete.src = "./meny/delete.png";
 dropToDelete.className = "dropToDelete";
-//dropToDeleteHover.src = "./meny/deletehover.png";
-//dropToDeleteHover.className= "dropToDeleteHover";
 
 // The object that creates a Card with text.
-function ImgContainer(enterCategory, imgSrc, altName, title, text) {
-  //checking if a string is null/undefined, blank or contains only white-space.
-  if (!enterCategory || /^\s*$/.test(enterCategory)) {
-    this.className = "unfiltered";
-  } else {
-    this.className = enterCategory.toLowerCase();
-  }
+function ImgContainer(imgSrc, altName, title, text) {
   this.imgSrc = imgSrc;
   this.altName = altName;
-  this.title = title;
+  //checking if a string is null/undefined, blank or contains only white-space.
+  if (!title || /^\s*$/.test(title)) {
+    this.title = "unfiltered";
+  } else {
+    this.title = title.toLowerCase();
+  }
   this.text = text;
 
   let galleryCard = document.createElement("div");
@@ -57,15 +54,18 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   let galleryIMG = document.createElement("img");
   let galleryTitle = document.createElement("h4");
   let galleryText = document.createElement("p");
+  let editButton = document.createElement("img");
 
   galleryContent.className = "content";
-  galleryCard.className = "column " + this.className;
+  galleryCard.className = "column " + this.title;
   galleryCard.draggable = "true";
   galleryIMG.src = imgSrc;
   galleryIMG.alt = altName;
   galleryIMG.style = "width: 100%";
   galleryTitle.textContent = title;
   galleryText.textContent = text;
+  editButton.src = "./meny/edit.png";
+  editButton.className = "editButton";
 
   galleryMain.appendChild(galleryCard);
   galleryCard.appendChild(galleryContent);
@@ -73,62 +73,93 @@ function ImgContainer(enterCategory, imgSrc, altName, title, text) {
   galleryContent.appendChild(galleryTitle);
   galleryContent.appendChild(galleryText);
 
+
+  //EditButton------------------------------------------------------------------------------------------------------------
+  let titleInput = document.createElement("input");
+  let textInput = document.createElement("input");
+  titleInput.type = "text";
+  textInput.type = "text";
+  galleryContent.appendChild(titleInput);
+  galleryContent.appendChild(textInput);
+  galleryContent.appendChild(editButton);
+  
+  titleInput.hidden = true;
+  textInput.hidden = true;
+  let editMode = false;
+
+
+  editButton.addEventListener("click", function () {
+    galleryCard.clicked();
+  });
+
+  galleryCard.clicked = function () {
+    //Enter edit mode
+    if (!editMode) {
+      editMode = true;
+      //change edit button to a save button
+      editButton.src = "./meny/saveEdits.png";
+
+      titleInput.hidden = false;
+      textInput.hidden = false;
+      galleryTitle.hidden = true;
+      galleryText.hidden = true;
+
+      titleInput.placeholder = galleryTitle.textContent;
+      textInput.placeholder = galleryText.textContent;
+    }
+    //Save edits and add them to text/title
+    else {
+      //Only change title or text if there's a new value.
+      if (titleInput.value) galleryTitle.innerText = titleInput.value;
+      if (textInput.value) galleryText.innerText = textInput.value;
+
+      titleInput.hidden = true;
+      textInput.hidden = true;
+      galleryTitle.hidden = false;
+      galleryText.hidden = false;
+      editMode = false;
+      //changes save button to edit button
+      editButton.src = "./meny/edit.png";
+      //------------------------------
+
+      compareSyncArray(galleryCard);
+
+      //Push "new" info (the edited one)
+      imgContainers.push(
+        new ImgContainer(
+          imgSrc,
+          randomNrID(),
+          galleryTitle.innerText,
+          galleryText.innerText
+        )
+      );
+      location.reload();
+      saveData();
+    }
+  };
+
+  //--------------------------------------------------------------------------------------------------------------------------------
+
   this.getImgCategory = function () {
-    return this.className;
+    return this.title;
   };
 }
-
 var imgContainers = []; // Array were IMG "cards" are stored.
 
-//SOME HARDCODED STUFF - REMOVAL BEFORE RELEASE!!
-/*---------------------------------------------------
-This is where you push the pictures into the array (imgContainers), 
-which then renders them on page 
-*/
-
 /*
-imgContainers.push(
-  new ImgContainer(
-    "Landscape",
-    "./images/Ees96A.jpg",
-    "nature pic",
-    "Forest",
-    "this is a nice pic"
-  )
-);
-imgContainers.push(
-  new ImgContainer(
-    "Landscape",
-    "./images/close-up-nature02.jpg",
-    "forestal view",
-    "Forestal view",
-    "another one"
-  )
-);
-imgContainers.push(
-  new ImgContainer(
-    "Landscape",
-    "./images/QGucjH.jpg",
-    "beautiful",
-    "A field and clouds",
-    "Another one bites the dust..."
-  )
-);
-imgContainers.push(
-  new ImgContainer(
-    "Computer",
-    "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-    "Inside",
-    "Inside",
-    "Calm inside view URL FROM NET"
-  )
-);
-imgContainers.push(
-  new ImgContainer(
-    "Monument",
-    "https://images.unsplash.com/photo-1606210122158-eeb10e0823bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-    "Petra city in the dark",
-    "Petra",
-    "URL FROM NET"
-  )
-); */
+ Compare galleryCard to array, keep those that does not have the same ID.
+ */
+function compareSyncArray(inputToCompare) {
+  let uniqueId = inputToCompare.childNodes[0].children[0].alt; //Check the unique altName of input item.
+
+  //Find the objects in imgContainers where the ID DOEST NOT exist.
+  let findObjectWithID = imgContainers.filter(
+    (check) => check.altName != uniqueId
+  ); // ID here (altName), with every object that does not match this with HTML-value above.
+
+  imgContainers = [];
+
+  for (let { imgSrc, altName, title, text } of findObjectWithID) {
+    imgContainers.push(new ImgContainer(imgSrc, altName, title, text));
+  }
+}
