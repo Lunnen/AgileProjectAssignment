@@ -7,6 +7,10 @@ let draging = false;
 
 updateItems();
 
+/*
+ Goes through every image container "card" one by one, 
+ and if clicked and dragged, do these functions.
+*/
 function updateItems() {
   dragItems = document.getElementsByClassName("column");
   dropToChangeFilter = document.getElementsByClassName("btn");
@@ -91,7 +95,6 @@ function updateItems() {
       dropToDelete.classList.remove("hint");
       dropToDelete.classList.remove("active");
 
-      console.log("try");
     });
   }
 }
