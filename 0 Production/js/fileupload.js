@@ -21,7 +21,7 @@ function showDataURI() {
     imgContainers.push(
       new ImgContainer(
         e.target.result, //sets value of raw-data-input in src.
-        parseInt(randomNrID()), //Random nr (ID) to sync DropEvent remove with imgContainers-array.
+        randomNrID(), //Random nr (ID) to sync DropEvent remove with imgContainers-array.
         "title",
         "Description"
       )
